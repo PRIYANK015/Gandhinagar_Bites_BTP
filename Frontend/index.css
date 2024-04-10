@@ -240,19 +240,32 @@ a.link-to-book:hover {
       .contact-adress p {
         margin-bottom: 0;
       }
-      
 
-    footer {
-        background-color: #b1ba4b;
-        color: #e23838;
-        padding: 20px 0;
-        text-align: center;
-      }
       
-      footer a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 10px;
-      }
+      .footer {
+        background-color: #333;
+        color: #f9f9f9;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .social-links {
+        display: flex;
+        align-items: center;
+    }
+    
+    .social-links a {
+        margin-right: 10px;
+    }
+    
+    .footer-text {
+        font-size: 14px;
+    }
+    
+
+
 
 }
