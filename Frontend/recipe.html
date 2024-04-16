@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Restaurant Website</title>
+    <title>Recipe</title>
 </head>
 <body>
 
@@ -30,19 +30,17 @@
     </ul>
 </nav>
 
-<section class="section-intro">
-    <header>
-        <h1>GANDHINAGAR BITEs</h1>
-    </header>
-    <div class="link-to-book-wrapper">
-        <a class="link-to-book" href="Reservation.html">Book a table</a>
-    </div>
-</section>
-
-<section class="Free Recipes">
+<section class="recipe-section">
     <div class="container">
-        <div class="row" id="recipe-list">
-            <!-- Recipe Cards will be added dynamically here -->
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 id="recipe-title">Recipe Title</h1>
+                <p id="recipe-description">Recipe Description</p>
+                <h2>Ingredients</h2>
+                <ul id="recipe-ingredients"></ul>
+                <h2>Instructions</h2>
+                <ol id="recipe-instructions"></ol>
+            </div>
         </div>
     </div>
 </section>
@@ -75,30 +73,34 @@
         <p class="copyright">Gandhinagar Bites © 2024</p>
     </footer>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Fetch recipes from the server and dynamically generate recipe cards
+    // Fetch recipe details from the server
     $(document).ready(function() {
-        $.get('/recipes', function(recipes) {
-            recipes.forEach(function(recipe) {
-                $('#recipe-list').append(`
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">${recipe.name}</h5>
-                                <p class="card-text">${recipe.description}</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="/recipes/${recipe._id}" class="btn btn-primary stretched-link">View Recipe</a>
-                            </div>
-                        </div>
-                    </div>
-                `);
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipeId = urlParams.get('id');
+
+        $.get(`/recipes/${recipeId}`, function(recipe) {
+            $('#recipe-title').text(recipe.name);
+            $('#recipe-description').text(recipe.description);
+
+            // Add ingredients to the list
+            const ingredientsList = $('#recipe-ingredients');
+            recipe.ingredients.forEach(function(ingredient) {
+                ingredientsList.append(`<li>${ingredient}</li>`);
+            });
+
+            // Add instructions to the list
+            const instructionsList = $('#recipe-instructions');
+            recipe.instructions.forEach(function(instruction) {
+                instructionsList.append(`<li>${instruction}</li>`);
             });
         });
     });
 </script>
+
 </body>
 </html>
