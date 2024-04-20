@@ -10,7 +10,7 @@ body {
 }
 
 table {
-    width: 400%;
+    width: 200%;
     border-collapse: collapse;
     
 }
@@ -18,16 +18,29 @@ table {
 th, td {
     border: 5px solid #dddddd;
     text-align: left;
-    padding: 20px;
+    padding: 15px;
 }
 
 th {
     background-color: #f2f2f2;
 }
 
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #000000;
+    padding: 0 20px;
+    text-align: center;
+    z-index: 9999; 
+  }
 
 .nav-flex-row {
     display: flex;
+    background-color: #000000;
+    position: fixed;
     flex-direction: row;
     justify-content: center;
     position: absolute;
@@ -97,24 +110,74 @@ a.link-to-book:hover {
     text-decoration: none;
 }
 
-
-.Menu {
-    display: flex;
-    align-items: left;
-    background-color: #f3f3f3c0;
-    padding: 60px 40px;
-    margin-bottom: 30px;
+.menu {
+    padding: 20px;
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.Menu p,
-.Menu h3 {
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.menu-section {
+    flex-basis: 80%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.menu-section h2 {
+    padding: 15px;
+    margin: 0;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.menu-items {
+    padding: 5px;
+}
+
+.menu-items table, .menu-items ul {
+    width: 20%;
+    border-collapse: collapse;
+}
+
+.menu-items th, .menu-items td, .menu-items li {
+    padding: 15px 2px;
+    border-bottom: 1px solid #ddd;
     text-align: left;
-    width: 60%;
-    margin: auto;
-    font-family: 'Big Shoulders Text', cursive;
-    font-size: 5.0em;
+}
+
+.menu-items th {
+    background-color: #f2f2f2;
+    font-weight: bold;
     text-transform: uppercase;
 }
+
+.menu-items tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.menu-item h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 2rem;
+    text-align: right;
+}
+
+.menu-item p {
+    color: #666;
+    margin-top: 0;
+    font-size: 1rem;
+}
+
 
 .carousel-inner {
     height: 700px;

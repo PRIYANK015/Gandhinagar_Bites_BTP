@@ -40,6 +40,8 @@ app.post('/submitReservation', async (req, res) => {
     }
 });
 
+
+
 async function checkReservationAvailability(date, time) {
     const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile('reservations.xlsx');
