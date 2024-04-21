@@ -26,7 +26,7 @@
             <a href="Menu.html">Menu</a>
         </li>
         <li class="nav-item">
-            <a href="Free_Recipes.html">Free Recipes</a>
+            <a href="Free_Recipes.html">Recipes By Chef</a>
         </li>
     </ul>
 </nav>
@@ -80,7 +80,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<script>
+<!-- <script>
     // Fetch recipes from the server and dynamically generate recipe cards
     $(document).ready(function() {
         console.log("Function running");
@@ -103,6 +103,35 @@
             });
         });
     });
+</script> -->
+
+<script>
+    // Fetch recipes from the server and dynamically generate recipe cards
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('http://localhost:3000/recipes')
+            .then(response => response.json())
+            .then(recipes => {
+                recipes.forEach(recipe => {
+                    document.getElementById('recipe-list').innerHTML += `
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">${recipe.name}</h5>
+                                    <p class="card-text">${recipe.description}</p>
+                                    <p class="card-text">Ingredients:${recipe.ingredients}</p>
+                                    <p class="card-text">Instructions:${recipe.instructions}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/recipe/${recipe._id}" class="btn btn-primary stretched-link">View Recipe Video</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching recipes:', error));
+    });
 </script>
+
 </body>
 </html>

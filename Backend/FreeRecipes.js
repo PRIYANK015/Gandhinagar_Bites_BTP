@@ -18,6 +18,7 @@ const recipeSchema = new mongoose.Schema({
     description: String,
     ingredients: [String],
     instructions: [String],
+    youtube_link: String
 });
 
 // Create Recipe Model
@@ -31,24 +32,30 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // Endpoint to add a new recipe
-app.post('/recipes', (req, res) => {
-    const { name, description, ingredients, instructions } = req.body;
+app.post('/recipes', async(req, res) => {
+    const { name, description, ingredients, instructions, youtube_link } = req.body;
 
-    const newRecipe = new Recipe({
-        name,
-        description,
-        ingredients,
-        instructions,
-    });
+    const cred = { name, description, ingredients, instructions, youtube_link};
 
-    newRecipe.save((err, recipe) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send('Error saving recipe');
-        } else {
-            res.status(200).send('Recipe saved successfully');
-        }
-    });
+    let recipe = await Recipe.create(cred);
+    
+    // const newRecipe = new Recipe({
+    //     name,
+    //     description,
+    //     ingredients,
+    //     instructions,
+    // });
+
+    // newRecipe.save();
+
+    // newRecipe.save((err, recipe) => {
+    //     if (err) {
+    //         console.error(err);
+    //         res.status(500).send('Error saving recipe');
+    //     } else {
+    //         res.status(200).send('Recipe saved successfully');
+    //     }
+    // });
 });
 
 // Endpoint to get all recipes
