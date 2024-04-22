@@ -40,7 +40,7 @@
         <div class="row-flex">
             <div class="flex-column-form">
                 <h3>Share Your Feedback Here.</h3>
-                <form id="FeedbackForm" action="http://localhost:3000/submitFeedback" method="POST" onsubmit="return submitForm(this)">
+                <form id="FeedbackForm" action="http://localhost:3001/submitFeedback" method="POST" onsubmit="return submitForm(this)">
                     <div class="form-group">
                         <p>Please fill these details</p>
                         <input type="text" class="form-control" id="InputName" name="name" aria-describedby="nameHelp" placeholder="Enter your name" required>
@@ -77,16 +77,16 @@
 </div>
 
 <div class="footer-basic">
-    <footer>
-        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/index.html">Home</a></li>
-            <li class="list-inline-item"><a href="https://www.google.com/maps/dir//daiict+address/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x395c2a3c9618d2c5:0xc54de484f986b1fa?sa=X&ved=1t:3061&ictx=111">Address</a></li>
-            <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Reservation.html">Reservation</a></li>
-            <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Menu.html">Menu</a></li>
-        </ul>
-        <p class="copyright">Gandhinagar Bites © 2024</p>
-    </footer>
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/index.html">Home</a></li>
+                <li class="list-inline-item"><a href="https://www.google.com/maps/dir//daiict+address/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x395c2a3c9618d2c5:0xc54de484f986b1fa?sa=X&ved=1t:3061&ictx=111">Address</a></li>
+                <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Reservation.html">Youtube Channel</a></li>
+                <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Feedback.html">Give Us Feedback</a></li>
+                
+            </ul>
+            <p class="copyright">Gandhinagar Bites © 2024</p>
+        </footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -115,7 +115,7 @@
         formDataObj[key] = value;
     });
 
-    fetch('http://localhost:3000/submitFeedback', {
+    fetch('http://localhost:3001/submitFeedback', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json' 
@@ -127,7 +127,7 @@
             throw new Error('Network response was not ok');
         }
         document.getElementById('messageContainer').textContent = 'Your feedback has been successfully submitted.';
-        setTimeout(function(){ document.getElementById('messageContainer').textContent = ''; form.reset(); }, 3000); // Clear form fields after 3 seconds
+        setTimeout(function(){ document.getElementById('messageContainer').textContent = ''; form.reset(); }, 6000); // Clear form fields after 3 seconds
     })
     .catch(error => {
         console.error('Error submitting feedback:', error);

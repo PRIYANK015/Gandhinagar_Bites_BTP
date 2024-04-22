@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const { body, validationResult } = require('express-validator');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 mongoose.connect('mongodb://127.0.0.1:27017/', {
     

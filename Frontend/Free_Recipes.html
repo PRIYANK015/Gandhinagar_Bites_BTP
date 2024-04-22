@@ -65,50 +65,26 @@
 </div>
 
 <div class="footer-basic">
-    <footer>
-        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="index.html">Home</a></li>
-            <li class="list-inline-item"><a href="https://www.google.com/maps/dir//daiict+address/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x395c2a3c9618d2c5:0xc54de484f986b1fa?sa=X&ved=1t:3061&ictx=111">Address</a></li>
-            <li class="list-inline-item"><a href="Reservation.html">Reservation</a></li>
-            <li class="list-inline-item"><a href="Menu.html">Menu</a></li>
-        </ul>
-        <p class="copyright">Gandhinagar Bites © 2024</p>
-    </footer>
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/index.html">Home</a></li>
+                <li class="list-inline-item"><a href="https://www.google.com/maps/dir//daiict+address/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x395c2a3c9618d2c5:0xc54de484f986b1fa?sa=X&ved=1t:3061&ictx=111">Address</a></li>
+                <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Reservation.html">Youtube Channel</a></li>
+                <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Feedback.html">Give Us Feedback</a></li>
+                
+            </ul>
+            <p class="copyright">Gandhinagar Bites © 2024</p>
+        </footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<!-- <script>
-    // Fetch recipes from the server and dynamically generate recipe cards
-    $(document).ready(function() {
-        console.log("Function running");
-        $.get('/recipes', function(recipes) {
-            recipes.forEach(function(recipe) {
-                console.log("inner Function running");
-                $('#recipe-list').append(`
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">${recipe.name}</h5>
-                                <p class="card-text">${recipe.description}</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="/recipes/${recipe._id}" class="btn btn-primary stretched-link">View Recipe</a>
-                            </div>
-                        </div>
-                    </div>
-                `);
-            });
-        });
-    });
-</script> -->
+
 
 <script>
-    // Fetch recipes from the server and dynamically generate recipe cards
     document.addEventListener("DOMContentLoaded", function() {
-        fetch('http://localhost:3000/recipes')
+        fetch('http://localhost:3002/recipes')
             .then(response => response.json())
             .then(recipes => {
                 recipes.forEach(recipe => {
