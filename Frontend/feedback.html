@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="Reservation.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Restaurant Website</title>
+</head>
+<body>
+<nav>
+    <ul class="nav-flex-row">
+        <li class="nav-item">
+            <a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/index.html">About</a>
+        </li>
+        <li class="nav-item">
+            <a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Reservation.html">Reservation</a>
+        </li>
+        <li class="nav-item">
+            <a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Menu.html">Menu</a>
+        </li>
+        <li class="nav-item">
+            <a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Free_Recipes.html">Recipes By Chef</a>
+        </li>
+    </ul>
+</nav>
+
+<section class="section-intro">
+    <header>
+        <h1>GANDHINAGAR BITES</h1>
+    </header>
+    <div class="Reservation_Table">
+        <h1>Thank for Sharing your Thoughts.</h1>
+    </div>
+</section>
+
+<section class="Feedback">
+    <div class="container">
+        <div class="row-flex">
+            <div class="flex-column-form">
+                <h3>Share Your Feedback Here.</h3>
+                <form id="FeedbackForm" action="http://localhost:3000/submitFeedback" method="POST" onsubmit="return submitForm(this)">
+                    <div class="form-group">
+                        <p>Please fill these details</p>
+                        <input type="text" class="form-control" id="InputName" name="name" aria-describedby="nameHelp" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter your email id" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="InputParagraph" name="paragraph" placeholder="Enter your Feedback (maximum 50 words)" rows="4" maxlength="50" required></textarea>
+                        <small id="wordCount" class="form-text text-muted">0 words</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div id="messageContainer" style="color: red; margin-top: 10px;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="opening-time">
+    <h3>Opening times</h3>
+    <p>
+        <span>Monday—Saturday: 10:00 — 22:00 </span>
+        <span>Sunday: 10:00 — 23:00 </span>
+    </p>
+</div>
+<div class="contact-adress">
+    <h3>Contact</h3>
+    <p>
+        <span>000 9283 8456</span>
+        <span>DAIICT</span>
+        <span>Gandhinagar, Gujarat</span>
+    </p>
+</div>
+
+<div class="footer-basic">
+    <footer>
+        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/index.html">Home</a></li>
+            <li class="list-inline-item"><a href="https://www.google.com/maps/dir//daiict+address/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x395c2a3c9618d2c5:0xc54de484f986b1fa?sa=X&ved=1t:3061&ictx=111">Address</a></li>
+            <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Reservation.html">Reservation</a></li>
+            <li class="list-inline-item"><a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Menu.html">Menu</a></li>
+        </ul>
+        <p class="copyright">Gandhinagar Bites © 2024</p>
+    </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script>
+    const textarea = document.getElementById('InputParagraph');
+    const wordCount = document.getElementById('wordCount');
+
+    textarea.addEventListener('input', function() {
+        const words = this.value.trim().split(/\s+/);
+        const count = words.length;
+
+        if (count <= 50) {
+            wordCount.textContent = count + ' words';
+        } else {
+            this.value = words.slice(0, 50).join(' ');
+            wordCount.textContent = '50 words (maximum)';
+        }
+    });
+
+    function submitForm(form) {
+    const formData = new FormData(form);
+
+    const formDataObj = {};
+    formData.forEach((value, key) => {
+        formDataObj[key] = value;
+    });
+
+    fetch('http://localhost:3000/submitFeedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(formDataObj) 
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        document.getElementById('messageContainer').textContent = 'Your feedback has been successfully submitted.';
+        setTimeout(function(){ document.getElementById('messageContainer').textContent = ''; form.reset(); }, 3000); // Clear form fields after 3 seconds
+    })
+    .catch(error => {
+        console.error('Error submitting feedback:', error);
+        document.getElementById('messageContainer').textContent = 'Error submitting feedback. Please try again later.';
+    });
+
+    return false; 
+}
+
+</script>
+</body>
+</html>
+

@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const ExcelJS = require('exceljs');
+const { body, validationResult } = require('express-validator');
 
 const app = express();
 const port = 3000;
@@ -10,13 +11,18 @@ const port = 3000;
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'your_email@gmail.com',
-        pass: 'your_password'
+        user: 'pitliyapriyank@gmail.com',
+        pass: 'qzwy iplu qtnj qajl'
     }
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    console.log('Request body:', req.body);
+    next();
+});
 
 app.post('/submitReservation', async (req, res) => {
     const name = req.body.name;
@@ -27,7 +33,7 @@ app.post('/submitReservation', async (req, res) => {
     try {
         const isReservationAvailable = await checkReservationAvailability(date, time);
         if (isReservationAvailable) {
-            sendEmail(email, 'Reservation Status', 'Reservation made successfully!');
+            sendEmail(email, 'Reservation Status', 'Reservation made successfully for ${date} at ${time}!');
             saveToExcel(name, email, date, time); 
             res.send('Reservation made successfully!');
         } else {
@@ -62,13 +68,12 @@ async function checkReservationAvailability(date, time) {
 
     console.log('Reservations for the hour:', reservationsForHour);
 
-    // number of reservations for the hour is 10
     return reservationsForHour.length < 10;
 }
 
 function sendEmail(to, subject, text) {
     const mailOptions = {
-        from: 'your_email@gmail.com',
+        from: 'pitliyapriyank@gmail.com',
         to: to,
         subject: subject,
         text: text

@@ -110,74 +110,82 @@ a.link-to-book:hover {
     text-decoration: none;
 }
 
-.menu {
-    padding: 20px;
-    background-color: #f9f9f9;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-.menu-container {
+.Menu {
+    padding: 50px 0;
+  }
+  
+  .menu-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.menu-section {
-    flex-basis: 80%;
+    justify-content: space-around;
+  }
+  
+  .menu-section {
+    flex: 1;
+    margin: 0 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
     margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.menu-section h2 {
-    padding: 15px;
-    margin: 0;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 2rem;
-    text-align: center;
-}
-
-.menu-items {
-    padding: 5px;
-}
-
-.menu-items table, .menu-items ul {
-    width: 20%;
+  }
+  
+  .menu-items {
+    width: 100%;
     border-collapse: collapse;
-}
-
-.menu-items th, .menu-items td, .menu-items li {
-    padding: 15px 2px;
-    border-bottom: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  th,
+  td {
+    padding: 10px;
     text-align: left;
-}
-
-.menu-items th {
+  }
+  
+  thead {
     background-color: #f2f2f2;
+  }
+  
+  th {
     font-weight: bold;
-    text-transform: uppercase;
-}
-
-.menu-items tbody tr:hover {
-    background-color: #f0f0f0;
-}
-
-.menu-item h3 {
-    color: #333;
-    margin-bottom: 5px;
-    font-size: 2rem;
-    text-align: right;
-}
-
-.menu-item p {
-    color: #666;
-    margin-top: 0;
-    font-size: 1rem;
-}
-
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  ul.menu-items {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  ul.menu-items li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  ul.menu-items li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Hover effect */
+  .menu-items tr:hover,
+  ul.menu-items li:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .menu-container {
+      flex-direction: column;
+    }
+  
+    .menu-section {
+      margin-bottom: 30px;
+    }
+  }
+  
 
 .carousel-inner {
     height: 700px;
@@ -225,7 +233,7 @@ a.link-to-book:hover {
     display: block;
 }
 
-@media (min-width:577px) and (max-width: 800px) {
+@media (min-width:400px) and (max-width: 600px) {
 
     .section-intro {
         height: 500px;

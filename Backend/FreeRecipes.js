@@ -5,14 +5,13 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-// Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 const db = mongoose.connection;
 
-// Define Recipe Schema
+
 const recipeSchema = new mongoose.Schema({
     name: String,
     description: String,
@@ -21,44 +20,31 @@ const recipeSchema = new mongoose.Schema({
     youtube_link: String
 });
 
-// Create Recipe Model
 const Recipe = mongoose.model('Recipe', recipeSchema);
 
-// Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Serve static files
 app.use(express.static('public'));
 
-// Endpoint to add a new recipe
-app.post('/recipes', async(req, res) => {
-    const { name, description, ingredients, instructions, youtube_link } = req.body;
-
-    const cred = { name, description, ingredients, instructions, youtube_link};
-
-    let recipe = await Recipe.create(cred);
-    
-    // const newRecipe = new Recipe({
-    //     name,
-    //     description,
-    //     ingredients,
-    //     instructions,
-    // });
-
-    // newRecipe.save();
-
-    // newRecipe.save((err, recipe) => {
-    //     if (err) {
-    //         console.error(err);
-    //         res.status(500).send('Error saving recipe');
-    //     } else {
-    //         res.status(200).send('Recipe saved successfully');
-    //     }
-    // });
+app.post('/recipes', async (req, res) => {
+    try {
+        const { name, description, ingredients, instructions, youtube_link } = req.body;
+        
+        const recipeData = { name, description, ingredients, instructions, youtube_link };
+        
+        const newRecipe = new Recipe(recipeData);
+        
+        await newRecipe.save();
+        
+        res.status(200).send('Recipe saved successfully');
+    } catch (error) {
+        console.error('Error saving recipe:', error);
+        res.status(500).send('Error saving recipe');
+    }
 });
 
-// Endpoint to get all recipes
+
 app.get('/recipes', async (req, res) => {
     try {
         const recipes = await Recipe.find();
@@ -69,7 +55,7 @@ app.get('/recipes', async (req, res) => {
     }
 });
 
-// Endpoint to get a single recipe by ID
+
 app.get('/recipes/:id', async (req, res) => {
     const id = req.params.id;
     try {
@@ -85,7 +71,6 @@ app.get('/recipes/:id', async (req, res) => {
     }
 });
 
-// Start server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
