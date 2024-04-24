@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <link rel="stylesheet" href="Free_Recipes.css">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Restaurant Website</title>
@@ -16,6 +13,11 @@
 
 <nav>
     <ul class="nav-flex-row">
+        <li class -"nav-logo">
+            <a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/index.html">
+              <img src="C:\Users\Shree\Downloads\Logoo.png" alt="Restaurant Logo" width="50">
+          </a>
+          </li>
         <li class="nav-item">
             <a href="index.html">About</a>
         </li>
@@ -28,6 +30,9 @@
         <li class="nav-item">
             <a href="Free_Recipes.html">Recipes By Chef</a>
         </li>
+        <li class="nav-item">
+            <a href="file:///C:/Users/Shree/Desktop/Restuarant%20Website/Frontend/Careers.html">Careers</a>
+          </li>
     </ul>
 </nav>
 
@@ -58,7 +63,7 @@
 <div class="contact-adress">
     <h3>Contact</h3>
     <p>
-        <span>000 9283 8456</span>
+        <span>000 000</span>
         <span>DAIICT</span>
         <span>Gandhinagar,  Gujarat</span>
     </p>
@@ -98,7 +103,7 @@
                                     <p class="card-text">Instructions:${recipe.instructions}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="/recipe/${recipe._id}" class="btn btn-primary stretched-link">View Recipe Video</a>
+                                 <iframe width="250" height="150" src="${recipe.youtube_link.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>

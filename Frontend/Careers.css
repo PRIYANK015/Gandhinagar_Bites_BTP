@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Big+Shoulders+Text:100,300,400,500,600,700,800,900&display=swap');
 
-/* font-family: 'Big Shoulders Text', cursive; */
+
 
 nav {
     position: fixed;
@@ -11,7 +11,7 @@ nav {
     color: #000000;
     padding: 0 20px;
     text-align: center;
-    z-index: 9999; /* Ensure it's on top of other content */
+    z-index: 9999; 
   }
 
   body {
@@ -108,58 +108,6 @@ a.link-to-book:hover {
     font-size: 1.8em;
     text-transform: uppercase;
 }
-
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: box-shadow 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-}
-
-.card-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.card-text {
-    font-size: 1rem;
-}
-
-.card-footer {
-    background-color: #ff4242;
-    border-top: 1px solid #ddd;
-    border-radius: 0 0 8px 8px;
-    padding: 10px;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-#recipe-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.col-lg-4,
-.col-md-6 {
-    margin-bottom: 30px;
-}
-
 
 .carousel-inner {
     height: 700px;
@@ -269,6 +217,33 @@ a.link-to-book:hover {
         font-size: 15px;
         text-align: center;
     }
+
+    .opening-contact-wrapper {
+        display: flex;
+        justify-content: space-between;
+      }
+      
+      .opening-time,
+      .contact-adress {
+        flex-basis: 48%; 
+      }
+      
+      
+      .opening-time,
+      .contact-adress {
+        padding: 20px;
+      }
+      
+      .opening-time h3,
+      .contact-adress h3 {
+        margin-top: 0;
+      }
+      
+      .opening-time p,
+      .contact-adress p {
+        margin-bottom: 0;
+      }
+      
 
     footer {
         background-color: #b1ba4b;
