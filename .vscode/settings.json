@@ -1,3 +1,4 @@
 {
-    "thunder-client.certificates": []
+    "thunder-client.certificates": [],
+    "deepscan.enable": true
 }
